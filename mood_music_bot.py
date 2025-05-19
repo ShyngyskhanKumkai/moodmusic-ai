@@ -55,12 +55,18 @@ st.markdown("""
     }
 
     .main-container h1 {
+        background-color: black; 
+        border-radius: 20px; 
+        color: white;
         font-size: 3rem;
         text-align: center;
         margin-bottom: 1rem;
     }
 
     .main-container p {
+        background-color: black; 
+        border-radius: 20px; 
+        color: white;
         text-align: center;
         font-size: 1.1rem;
         margin-bottom: 2rem;
