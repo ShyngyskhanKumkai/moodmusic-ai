@@ -111,7 +111,30 @@ st.markdown('<div class="main-container">', unsafe_allow_html=True)
 st.markdown('<div class="title">🎧 MoodMusic AI</div>', unsafe_allow_html=True)
 st.markdown('<div class="subtitle">Tell me how you feel and I\'ll pick a playlist for your mood.</div>', unsafe_allow_html=True)
 
-user_input = st.text_input("💬 Enter your mood text:")
+st.markdown("""
+    <style>
+    /* Стили для input */
+    div[data-baseweb="input"] > div {
+        background-color: black !important;
+        color: white !important;
+        border: 1px solid white;
+        border-radius: 10px;
+    }
+
+    /* Стили для текста внутри input */
+    input {
+        color: white !important;
+        background-color: black !important;
+    }
+
+    /* Стили для placeholder (если нужно) */
+    input::placeholder {
+        color: #888;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
+user_input = st.text_input("💬 Введите ваше настроение:")
 
 if user_input:
     emotion, confidence = get_emotion(user_input)
