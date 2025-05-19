@@ -1,6 +1,6 @@
-streamlit
-transformers>=4.40.0
+streamlit>=1.25.0
+transformers==4.38.2
 torch==2.2.2
-huggingface_hub[hf_xet]
+huggingface_hub[hf_xet]>=0.22.2
 numpy>=1.23
 Pillow
