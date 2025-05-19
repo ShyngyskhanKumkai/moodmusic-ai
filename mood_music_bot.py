@@ -150,7 +150,7 @@ if user_input:
         box-shadow: 0 0 15px rgba(255,255,255,0.1);
         font-size: 18px;
     ">
-        🧠 <strong>Emotion detected:</strong> <code style='color: #1DB954; font-size: 20px;'>{emotion}</code><br><br>
+        🧠 <strong>Emotion detected:</strong> <code style='background-color: black; color: #1DB954; font-size: 20px;'>{emotion}</code><br><br>
         🔍 <strong>Confidence:</strong> {confidence:.2f}
     </div>
 """, unsafe_allow_html=True)
