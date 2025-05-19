@@ -12,7 +12,7 @@ def load_classifier():
     )
 
 classifier = load_classifier()
-
+ 
 # Эмоции и плейлисты
 emotion_to_playlist = {
     "joy": {"name": "Happy Hits", "url": "https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC"},
