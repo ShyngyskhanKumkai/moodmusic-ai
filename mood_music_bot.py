@@ -89,6 +89,10 @@ st.markdown('<p class="description">Tell me how you feel and I\'ll pick out some
 # Поле ввода
 st.markdown("""
 <style>
+label {
+    color: white !important;
+    font-weight: bold;
+}
 input[type="text"] {
     color: white;
     background-color: black;  /* если нужно */
