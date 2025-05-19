@@ -12,7 +12,7 @@ def load_classifier():
     )
 
 classifier = load_classifier()
- 
+
 # Эмоции и плейлисты
 emotion_to_playlist = {
     "joy": {"name": "Happy Hits", "url": "https://open.spotify.com/playlist/37i9dQZF1DXdPec7aLTmlC"},
@@ -41,59 +41,52 @@ def set_background(image_path="img.jpg"):
     except FileNotFoundError:
         st.warning("⚠️ Фоновое изображение 'img.jpg' не найдено.")
 
-# Стилизация контейнера
+# Стилизация заголовка и подзаголовка, инпута и результата
 st.markdown("""
     <style>
-    .main-container {
-        background-color: rgba(0, 0, 0, 0.85);
+    h1 {
+        background-color: black;
         color: white;
-        max-width: 700px;
-        margin: 5vh auto;
-        padding: 3rem 2rem;
-        border-radius: 20px;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-    }
-
-    .main-container h1 {
-        background-color: black; 
-        border-radius: 20px; 
-        color: white;
+        text-align: center;
+        padding: 1rem;
+        border-radius: 12px;
         font-size: 3rem;
-        text-align: center;
-        margin-bottom: 1rem;
+        margin-top: 40px;
+        margin-bottom: 0.5rem;
     }
 
-    .main-container p {
-        background-color: black; 
-        border-radius: 20px; 
+    p.description {
+        background-color: black;
         color: white;
         text-align: center;
-        font-size: 1.1rem;
+        padding: 0.8rem 1rem;
+        border-radius: 12px;
+        font-size: 1.2rem;
+        margin-top: 0;
         margin-bottom: 2rem;
     }
 
-    input[type="text"] {{
-        background-color: #000;
-        color: white;
+    input[type="text"] {
+        background-color: black !important;
+        color: white !important;
         border-radius: 10px;
-        border: 1px solid white;
-        padding: 0.5rem;
-    }}
+        border: 1px solid white !important;
+        padding: 0.5rem !important;
+    }
 
-    ::placeholder {{
-        color: #aaa;
-    }}
+    ::placeholder {
+        color: #aaa !important;
+    }
     </style>
 """, unsafe_allow_html=True)
 
 set_background("img.jpg")
 
-# Интерфейс
-st.markdown("<div class='main-container'>", unsafe_allow_html=True)
+# Заголовок и подзаголовок
+st.markdown("<h1>🎧 MoodMusic AI</h1>", unsafe_allow_html=True)
+st.markdown('<p class="description">Tell me how you feel and I\'ll pick out some music for you.</p>', unsafe_allow_html=True)
 
-st.markdown("<h1 class='main-container h1'>🎧 MoodMusic AI</h1>", unsafe_allow_html=True)
-st.markdown("<p class='main-container p'>Tell me how you feel and I'll pick out some music for you.</p>", unsafe_allow_html=True)
-
+# Поле ввода
 user_input = st.text_input("Enter your mood:")
 
 if user_input:
@@ -136,5 +129,3 @@ if user_input:
             </a>
         </div>
     """, unsafe_allow_html=True)
-
-st.markdown("</div>", unsafe_allow_html=True)
