@@ -46,7 +46,7 @@ st.markdown("""
     <style>
     h1 {
         background-color: black;
-        color: white;
+        color: green;
         text-align: center;
         padding: 1rem;
         border-radius: 12px;
@@ -87,7 +87,21 @@ st.markdown("<h1>🎧 MoodMusic AI</h1>", unsafe_allow_html=True)
 st.markdown('<p class="description">Tell me how you feel and I\'ll pick out some music for you.</p>', unsafe_allow_html=True)
 
 # Поле ввода
+st.markdown("""
+<style>
+input[type="text"] {
+    color: white;
+    background-color: black;  /* если нужно */
+    border: 1px solid white;
+}
+::placeholder {
+    color: #aaa;
+}
+</style>
+""", unsafe_allow_html=True)
+
 user_input = st.text_input("Enter your mood:")
+
 
 if user_input:
     results = classifier(user_input)
