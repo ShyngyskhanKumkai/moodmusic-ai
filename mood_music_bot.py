@@ -126,11 +126,6 @@ st.markdown("""
         color: white !important;
         background-color: black !important;
     }
-
-    /* Стили для placeholder (если нужно) */
-    input::placeholder {
-        color: #888;
-    }
     </style>
 """, unsafe_allow_html=True)
 
