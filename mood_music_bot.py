@@ -39,6 +39,8 @@ def set_background(image_path="img.jpg"):
                 background-size: cover;
                 background-attachment: fixed;
                 background-position: center;
+                z-index: 0;
+                position: relative;
             }}
             </style>
             """,
@@ -82,17 +84,23 @@ st.markdown("""
             margin: auto;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            z-index: 1;
+            position: relative;
         }
         .title {
             text-align: center;
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 0.5rem;
+            z-index: 100;
+            position: relative;
         }
         .subtitle {
             text-align: center;
             color: #ccc;
             margin-bottom: 2rem;
+            z-index: 100;
+            position: relative;
         }
         .result {
             background-color: black;
@@ -103,6 +111,8 @@ st.markdown("""
             margin-top: 20px;
             box-shadow: 0 0 15px rgba(255,255,255,0.1);
             font-size: 18px
+            z-index: 100;
+            position: relative;
         }
         a {
             color: #00ffff;
@@ -167,6 +177,8 @@ if playlist_url != "#":
             margin-top: 20px;
             box-shadow: 0 0 15px rgba(255,255,255,0.1);
             font-size: 18px;
+            z-index: 100;
+            position: relative;
         ">
             🎵 <strong>Recommended playlist:</strong><br>
             <a href="{playlist_url}" style="color: #1DB954; font-size: 20px; font-weight: bold;" target="_blank">
@@ -185,6 +197,8 @@ else:
             margin-top: 20px;
             box-shadow: 0 0 15px rgba(255,255,255,0.1);
             font-size: 18px;
+            z-index: 100;
+            position: relative;
         ">
             ⚠️ Unfortunately, no suitable playlist was found.
         </div>
