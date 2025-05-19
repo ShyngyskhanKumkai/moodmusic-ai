@@ -94,10 +94,14 @@ st.markdown("""
             margin-bottom: 2rem;
         }
         .result {
-            margin-top: 2rem;
-            background-color: rgba(255,255,255,0.05);
-            padding: 1rem;
-            border-radius: 10px;
+            background-color: black;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            font-size: 18px
         }
         a {
             color: #00ffff;
@@ -137,9 +141,11 @@ if user_input:
 
     st.markdown('<div class="result">', unsafe_allow_html=True)
     st.markdown(f"🧠 **Detected Emotion:** `{emotion}`")
+    st.markdown('<div class="result">', unsafe_allow_html=True)
     st.markdown(f"🔎 **Confidence:** `{confidence:.2f}`")
 
     if playlist_url != "#":
+        st.markdown('<div class="result">', unsafe_allow_html=True)
         st.markdown(f"🎵 **Recommended Playlist:** [**{playlist_name}**]({playlist_url})")
     else:
         st.markdown("⚠️ Unfortunately, no suitable playlist was found.")
