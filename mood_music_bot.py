@@ -2,6 +2,7 @@ import streamlit as st
 from transformers import pipeline
 import base64
 
+# Кешируем модель, чтобы не загружать каждый раз
 @st.cache_resource
 def load_classifier():
     return pipeline(
@@ -11,7 +12,6 @@ def load_classifier():
     )
 
 classifier = load_classifier()
-
 
 # Эмоции и соответствующие плейлисты
 emotion_to_playlist = {
@@ -43,22 +43,25 @@ emotion_to_playlist = {
 
 # Установка фонового изображения
 def set_background(image_path="img.jpg"):
-    with open(image_path, "rb") as image_file:
-        encoded_string = base64.b64encode(image_file.read()).decode()
-    st.markdown(
-        f"""
-        <style>
-        .stApp {{
-            background-image: url("data:image/jpg;base64,{encoded_string}");
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            color: white;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True
-    )
+    try:
+        with open(image_path, "rb") as image_file:
+            encoded_string = base64.b64encode(image_file.read()).decode()
+        st.markdown(
+            f"""
+            <style>
+            .stApp {{
+                background-image: url("data:image/jpg;base64,{encoded_string}");
+                background-size: cover;
+                background-attachment: fixed;
+                background-position: center;
+                color: white;
+            }}
+            </style>
+            """,
+            unsafe_allow_html=True
+        )
+    except FileNotFoundError:
+        st.warning("⚠️ Фоновое изображение 'img.jpg' не найдено.")
 
 # Получение эмоции
 def get_emotion(text):
