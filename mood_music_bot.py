@@ -2,8 +2,16 @@ import streamlit as st
 from transformers import pipeline
 import base64
 
-# Загрузка модели
-classifier = pipeline("text-classification", model="j-hartmann/emotion-english-distilroberta-base", top_k=1)
+@st.cache_resource
+def load_classifier():
+    return pipeline(
+        "text-classification",
+        model="j-hartmann/emotion-english-distilroberta-base",
+        top_k=1
+    )
+
+classifier = load_classifier()
+
 
 # Эмоции и соответствующие плейлисты
 emotion_to_playlist = {
