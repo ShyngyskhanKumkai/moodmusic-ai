@@ -78,6 +78,7 @@ st.markdown("""
             background-color: rgba(0, 0, 0, 0.85);
             padding: 2rem;
             max-width: 700px;
+            min-height: 90vh;
             margin: auto;
             border-radius: 15px;
             box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
