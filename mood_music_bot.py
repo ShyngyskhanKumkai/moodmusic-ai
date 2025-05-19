@@ -46,7 +46,7 @@ st.markdown("""
     <style>
     h1 {
         background-color: black;
-        color: green;
+        color: white !important;
         text-align: center;
         padding: 1rem;
         border-radius: 12px;
