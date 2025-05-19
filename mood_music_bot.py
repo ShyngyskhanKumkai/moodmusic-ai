@@ -91,8 +91,8 @@ set_background("img.jpg")
 # Интерфейс
 st.markdown("<div class='main-container'>", unsafe_allow_html=True)
 
-st.markdown("<h1>🎧 MoodMusic AI</h1>", unsafe_allow_html=True)
-st.markdown("<p>Tell me how you feel and I'll pick out some music for you.</p>", unsafe_allow_html=True)
+st.markdown("<h1 class='main-container h1'>🎧 MoodMusic AI</h1>", unsafe_allow_html=True)
+st.markdown("<p class='main-container p'>Tell me how you feel and I'll pick out some music for you.</p>", unsafe_allow_html=True)
 
 user_input = st.text_input("Enter your mood:")
 
