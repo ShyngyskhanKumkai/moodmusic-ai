@@ -139,16 +139,56 @@ if user_input:
     emotion, confidence = get_emotion(user_input)
     playlist_name, playlist_url = get_playlist(emotion)
 
-    st.markdown('<div class="result">', unsafe_allow_html=True)
-    st.markdown(f"🧠 **Detected Emotion:** `{emotion}`")
-    st.markdown('<div class="result">', unsafe_allow_html=True)
-    st.markdown(f"🔎 **Confidence:** `{confidence:.2f}`")
+    st.markdown(f"""
+    <div style="
+        background-color: black;
+        color: white;
+        padding: 1.5rem;
+        border-radius: 12px;
+        text-align: center;
+        margin-top: 30px;
+        box-shadow: 0 0 15px rgba(255,255,255,0.1);
+        font-size: 18px;
+    ">
+        🧠 <strong>Emotion detected:</strong> <code style='color: #1DB954; font-size: 20px;'>{emotion}</code><br><br>
+        🔍 <strong>Confidence:</strong> {confidence:.2f}
+    </div>
+""", unsafe_allow_html=True)
 
-    if playlist_url != "#":
-        st.markdown('<div class="result">', unsafe_allow_html=True)
-        st.markdown(f"🎵 **Recommended Playlist:** [**{playlist_name}**]({playlist_url})")
-    else:
-        st.markdown("⚠️ Unfortunately, no suitable playlist was found.")
+if playlist_url != "#":
+    st.markdown(f"""
+        <div style="
+            background-color: black;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            font-size: 18px;
+        ">
+            🎵 <strong>Recommended playlist:</strong><br>
+            <a href="{playlist_url}" style="color: #1DB954; font-size: 20px; font-weight: bold;" target="_blank">
+                {playlist_name}
+            </a>
+        </div>
+    """, unsafe_allow_html=True)
+else:
+    st.markdown("""
+        <div style="
+            background-color: black;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 20px;
+            box-shadow: 0 0 15px rgba(255,255,255,0.1);
+            font-size: 18px;
+        ">
+            ⚠️ Unfortunately, no suitable playlist was found.
+        </div>
+    """, unsafe_allow_html=True)
+
     st.markdown('</div>', unsafe_allow_html=True)
 
 st.markdown('</div>', unsafe_allow_html=True)
