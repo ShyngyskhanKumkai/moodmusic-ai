@@ -2,7 +2,10 @@ import streamlit as st
 from transformers import pipeline
 import base64
 
-# Кешируем модель, чтобы не загружать каждый раз
+# Настройки страницы
+st.set_page_config(page_title="MoodMusic AI", page_icon="🎧", layout="centered")
+
+# Подключаем модель и кэшируем
 @st.cache_resource
 def load_classifier():
     return pipeline(
@@ -13,7 +16,7 @@ def load_classifier():
 
 classifier = load_classifier()
 
-# Эмоции и соответствующие плейлисты
+# Сопоставление эмоций и плейлистов
 emotion_to_playlist = {
     "joy": {
         "name": "Happy Hits",
@@ -41,7 +44,7 @@ emotion_to_playlist = {
     }
 }
 
-# Установка фонового изображения
+# 🔳 Установка фонового изображения
 def set_background(image_path="img.jpg"):
     try:
         with open(image_path, "rb") as image_file:
@@ -63,7 +66,7 @@ def set_background(image_path="img.jpg"):
     except FileNotFoundError:
         st.warning("⚠️ Фоновое изображение 'img.jpg' не найдено.")
 
-# Получение эмоции
+# 🧠 Анализ текста на эмоции
 def get_emotion(text):
     results = classifier(text)
     result = results[0][0]
@@ -71,7 +74,7 @@ def get_emotion(text):
     score = result['score']
     return label, score
 
-# Получение плейлиста по эмоции
+# 🎧 Получение подходящего плейлиста
 def get_playlist(emotion):
     playlist = emotion_to_playlist.get(emotion)
     if playlist:
@@ -79,20 +82,66 @@ def get_playlist(emotion):
     else:
         return "Playlist not found", "#"
 
-# Интерфейс
-set_background("img.jpg")  # помести файл img.jpg рядом со скриптом
+# Установка фона
+set_background("img.jpg")  # Помести изображение рядом со скриптом
 
-st.markdown("<h1 style='background-color: rgba(0, 0, 0, 0.7); padding: 1rem; border-radius: 10px; color: white; text-align: center; font-size: 40px; margin-top: 40px;'>🎧 MoodMusic AI</h1>", unsafe_allow_html=True)
-st.markdown("<p style='background-color: rgba(0, 0, 0, 0.7); padding: 1rem; border-radius: 10px; color: white; text-align: center;'>Tell me how you feel and I'll pick out some music for you.</p>", unsafe_allow_html=True)
+# 🎨 Пользовательский CSS (тёмный брутализм)
+st.markdown("""
+    <style>
+        * {
+            font-family: 'Courier New', monospace;
+        }
+        .title {
+            font-size: 3em;
+            font-weight: bold;
+            text-align: center;
+            color: white;
+            margin-bottom: 10px;
+            padding: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.7);
+            border: 3px solid white;
+            border-radius: 12px;
+        }
+        .subtitle {
+            text-align: center;
+            color: #ccc;
+            padding: 0.5rem;
+            background-color: rgba(0, 0, 0, 0.6);
+            border-radius: 10px;
+            margin-bottom: 2rem;
+        }
+        .result-box {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 1rem;
+            border: 2px dashed white;
+            border-radius: 10px;
+            margin-top: 1.5rem;
+        }
+        .playlist-link {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #00ffcc;
+        }
+    </style>
+""", unsafe_allow_html=True)
 
-user_input = st.text_input("Enter your mood:")
+# 🧾 Интерфейс
+st.markdown('<div class="title">🎧 MoodMusic AI</div>', unsafe_allow_html=True)
+st.markdown("<div class='subtitle'>Tell me how you feel and I'll pick out some music for you.</div>", unsafe_allow_html=True)
+
+user_input = st.text_input("💬 Enter your mood text:")
 
 if user_input:
     emotion, confidence = get_emotion(user_input)
     playlist_name, playlist_url = get_playlist(emotion)
 
-    st.markdown(f"🧠 **Emotion:** `{emotion}` (confidence: {confidence:.2f})")
+    st.markdown("<div class='result-box'>", unsafe_allow_html=True)
+    st.markdown(f"🧠 <strong>Detected emotion:</strong> <code>{emotion}</code>", unsafe_allow_html=True)
+    st.markdown(f"🔎 <strong>Confidence:</strong> <code>{confidence:.2f}</code>", unsafe_allow_html=True)
+
     if playlist_url != "#":
-        st.markdown(f"🎵 **Recommended playlist:** [{playlist_name}]({playlist_url})")
+        st.markdown(f"🎵 <strong>Recommended playlist:</strong> <a class='playlist-link' href='{playlist_url}' target='_blank'>{playlist_name}</a>", unsafe_allow_html=True)
     else:
         st.markdown("⚠️ Unfortunately, no suitable playlist was found.")
+
+    st.markdown("</div>", unsafe_allow_html=True)
