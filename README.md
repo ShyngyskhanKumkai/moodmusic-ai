@@ -88,27 +88,19 @@ User personalization: Playlists adapted to individual taste through API integrat
 Emotion history tracking: Analysis of emotional patterns over time.
 
 9. Project Structure
-bash
-Копировать
-Редактировать
 MoodMusicAI/
 ├── mood_music_bot.py          # Core application script
 ├── requirements.txt           # Dependencies list
 ├── README.md                  # Project documentation
 ├── background.png (optional)  # Background image (embedded)
-10. Installation & Execution
-Install dependencies:
 
-bash
-Копировать
-Редактировать
+11. Installation & Execution
+Install dependencies:
 pip install -r requirements.txt
 Run the application:
 
-bash
-Копировать
-Редактировать
 streamlit run mood_music_bot.py
+
 11. Author Information
 Developer: [Kumkay Shynggyskhan]
 Completion Date: [20.05.2025]
