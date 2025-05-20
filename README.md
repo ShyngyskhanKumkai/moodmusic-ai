@@ -110,6 +110,6 @@ bash
 Редактировать
 streamlit run mood_music_bot.py
 11. Author Information
-Developer: [Your Full Name]
-Completion Date: [Insert Date]
+Developer: [Kumkay Shynggyskhan]
+Completion Date: [20.05.2025]
 Contact: [Email / GitHub / LinkedIn]
